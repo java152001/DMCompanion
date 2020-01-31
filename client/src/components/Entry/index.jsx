@@ -5,7 +5,8 @@ class Entry extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: this.props
+            data: this.props,
+            showForm: 'hide'
         }
     }
 
