@@ -28,13 +28,14 @@ class Year extends Component {
 
         return (
             <div className = "year">
-                <button
+                <span className = "label">Year</span>
+                <div className = "arrow dec"
                     onClick = {() => this.props.yearChange(this.state.year - 1)}
-                > - </button>
+                ><i class="fas fa-caret-left"></i></div>
                 <span className = "currentYear">{this.state.year}</span>
-                <button className = "yearIncrement"
+                <div className = "arrow inc"
                     onClick = {() => this.props.yearChange(this.state.year + 1)}
-                > + </button>
+                ><i class="fas fa-caret-right"></i></div>
             </div>
         )
     }

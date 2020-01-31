@@ -74,6 +74,10 @@ export default class Home extends Component {
 		return (
 			<div className="Home">
 				<Header />
+				<div className = "titleCont">
+					<h1 className = "title">Calendar of Harptos</h1>
+				</div>
+				<div className="divider"></div>
 				<div className = "yearCont">
 					<Year
 						year = {this.state.selectedYear}

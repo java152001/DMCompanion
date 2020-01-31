@@ -1,0 +1,16 @@
+.yearCont .year {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Marcellus SC', serif;
+    font-size: 40px;
+}
+
+.yearCont .year .label {
+    margin-right: 30px;
+}
+
+.yearCont .year .arrow {
+    margin: 0 10px;
+    color: #9B865C;
+}

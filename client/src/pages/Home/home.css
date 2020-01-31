@@ -1,7 +1,32 @@
+.Home {
+    background: #C6AD7D;
+}
+
+.Home .titleCont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Home .titleCont .title {
+    font-family: 'Marcellus', serif;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.Home .divider {
+    height: 20px;
+    width: 400px;
+    margin: 0 auto 20px;
+    border: 1px solid #000;
+    background-color: red;
+    clip-path: polygon(60% 0, 100% 50%, 40% 100%, 0 50%);
+}
+
 .Home .monthCont {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1310px;
+    max-width: 1358px;
     padding: 0 15px;
     margin: 0 auto;
 }
