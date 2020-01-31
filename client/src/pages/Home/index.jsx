@@ -14,6 +14,7 @@ export default class Home extends Component {
 			selectedMonth: '',
 			selectedYear: 1469,
 			eventData: [],
+			showForm : false,
 			months: [
 				{ name: "Hammer",
 				commonName: "Deepwinter"},
@@ -44,6 +45,7 @@ export default class Home extends Component {
 		this.dayClick = this.dayClick.bind(this);
 		this.updateEvents = this.updateEvents.bind(this);
 		this.yearClick = this.yearClick.bind(this);
+		this.showForm = this.showForm.bind(this);
 	}
 
 	dayClick(month, date) {
@@ -51,6 +53,11 @@ export default class Home extends Component {
 			selectedMonth: month,
 			selectedDate: date
 		})
+	}
+
+	showForm() {
+		const currentState = this.state.showForm;
+		this.setState({ showForm: !currentState })
 	}
 
 	yearClick(year) {
@@ -94,20 +101,34 @@ export default class Home extends Component {
 						/>
 					))}
 				</div>
-				<Form 
-					month = {this.state.selectedMonth}
-					day = {this.state.selectedDate} 
-					year = {this.state.selectedYear}
-				/>
-				<div className = "entryCont">
-					{this.state.eventData.map(entry => (
-						<Entry
-							year = {entry.year}
-							month = {entry.month}
-							day = {entry.day}
-							event = {entry.entry}
-						/>
-					))}
+				<div className="inputCont">
+					<div className = "entryCont">
+						<div className = "topEntry">
+							<div className = "entryDate">
+								<h3 className = "month">{this.state.selectedMonth}</h3>
+								<h3 className = "day">{this.state.selectedDate}</h3>
+							</div>
+							<div className = "newEntry"
+								onClick = {this.showForm}
+							>
+								<h4>New Entry</h4>
+							</div>
+						</div>
+						<div className="bottomEntry">
+							{this.state.eventData.map(entry => (
+								<Entry
+									year = {entry.year}
+									event = {entry.entry}
+								/>
+							))}
+						</div>
+					</div>
+					<Form 
+						showForm = {this.state.showForm}
+						month = {this.state.selectedMonth}
+						day = {this.state.selectedDate} 
+						year = {this.state.selectedYear}
+					/>
 				</div>
 			</div>
 		)

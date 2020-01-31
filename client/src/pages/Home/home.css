@@ -1,5 +1,7 @@
 .Home {
     background: #C6AD7D;
+    padding-bottom: 50px;
+    overflow: hidden;
 }
 
 .Home .titleCont {
@@ -29,4 +31,56 @@
     max-width: 1358px;
     padding: 0 15px;
     margin: 0 auto;
+}
+
+.Home .inputCont {
+    max-width: 1358px;
+    padding: 0 15px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.Home .entryCont {
+    width: 30%;
+}
+
+.Home .entryCont .topEntry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.Home .topEntry .entryDate {
+    display: flex;
+}
+
+.Home .topEntry .entryDate h3 {
+    font-family: 'Marcellus', serif;
+    margin-right: 20px;
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+.Home .topEntry .newEntry {
+    padding: 8px 15px;
+    background-color: #ED3231;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.Home .topEntry .newEntry h4 {
+    font-family: 'Marcellus', serif;
+    line-height: 1;
+    color: #EED4C1;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.Home .entryCont .bottomEntry {
+    padding: 10px;
+    border: 1px solid #9B865C;
+    background-color: #D7BF93;
+    border-radius: 5px;
+    min-height: 300px;
 }

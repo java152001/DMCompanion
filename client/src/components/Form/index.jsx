@@ -7,7 +7,7 @@ class Form extends Component {
         super(props)
         console.log(props);
         this.state = {
-            year: 0,
+            year: '',
             month: '',
             day: '',
             entry: ''
@@ -21,6 +21,15 @@ class Form extends Component {
         );
     }
 
+    componentDidMount() {
+        this.setState({
+            year: this.props.year,
+            month: this.props.month,
+            day: this.props.day,
+            showForm: this.props.showForm
+        })
+    }
+
     componentDidUpdate() {
         const newProps = this.props;
         let newDate = newProps.month + newProps.day + newProps.year;
@@ -32,30 +41,34 @@ class Form extends Component {
                 day: newProps.day
             })
         }
+
+        if(newProps.showForm !== this.state.showForm) {
+            this.setState({
+                showForm: newProps.showForm
+            })
+        }
+
     }
 
     render() {
 
         return (
-            <div className = "entryForm">
+            <div className = {this.state.showForm ? 'entryForm show' : 'entryForm'}>
                 <form onSubmit={this.submitHandler}>
-                    <input
-                        type="text"
-                        value={this.state.month}
-                        onChange={ event => this.setState({ month: event.target.value })}
-                        placeholder="Month"
-                    />
-                    <input
-                        type="text"
-                        value={this.state.day}
-                        onChange={ event => this.setState({ day: event.target.value })}
-                        placeholder="Day"
-                    />
-                    <input
+                    <div className = "entryYear">
+                        {this.state.year}
+                    </div>
+                    <div className = "entryMonth">
+                        {this.state.month}
+                    </div>
+                    <div className = "entryDay">
+                        {this.state.day}
+                    </div>
+                    <textarea
                         type="text"
                         value={this.state.entry}
                         onChange={ event => this.setState({ entry: event.target.value })}
-                        placeholder="Entry"
+                        placeholder="Type your new entry"
                     />
                     <input
                         type="submit"

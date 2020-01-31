@@ -1,0 +1,16 @@
+.entry {
+    display: flex;
+    font-family: 'Marcellus', serif;
+}
+
+.entry .date {
+    white-space: nowrap;
+}
+
+.entry .year {
+    font-weight: bold;
+}
+
+.entry .event {
+    margin-left: 5px;
+}

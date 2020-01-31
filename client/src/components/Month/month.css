@@ -1,9 +1,10 @@
 .monthCont .month {
     padding: 10px;
     border: 1px solid #000;
-    margin: 5px;
+    margin: 0 5px 40px;
     background: #EAE0BB;
     text-align: center;
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .monthCont .month .title {
