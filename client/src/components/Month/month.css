@@ -1,0 +1,9 @@
+.month {
+    padding: 0 10px;
+}
+
+.month .dayCont {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 300px;
+}
