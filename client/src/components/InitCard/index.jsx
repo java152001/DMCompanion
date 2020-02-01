@@ -18,12 +18,12 @@ class InitCard extends Component {
                 <div className="roll-cont">
                     <h2 className="roll">{this.props.roll}</h2>
                 </div>
-                <button 
+                <div 
                     className="deleteBtn"
                     onClick = {() => this.props.delete(this.props.number)}    
                 >
-                    -
-                </button>
+                    <i class="fas fa-skull"></i>
+                </div>
             </div>
         )
     }
