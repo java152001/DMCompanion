@@ -1,0 +1,14 @@
+.intTracker {
+    height: 100vh;
+    background-color: #066a65;
+    padding-top: 100px;
+}
+
+.intTracker .main-cont {
+    width: 530px;
+    height: 700px;
+    padding: 0 15px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    background-color: #416c14;
+}

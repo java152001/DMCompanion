@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // import axios from 'axios'
 import { Route } from 'react-router-dom'
 import Home from './pages/Home'
+import Inttracker from './pages/Initiativetracker'
 import { NavBar } from './components'
 
 class App extends Component {
@@ -26,7 +27,11 @@ class App extends Component {
 					path="/"
 					render={() =>
 						<Home user={this.state.user} />} 
-				/>				
+				/>
+				<Route
+					exact path="/inttracker"
+					render={() => <Inttracker />}
+				/>
 			</div>
 		)
 	}

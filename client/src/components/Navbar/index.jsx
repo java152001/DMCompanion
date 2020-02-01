@@ -11,6 +11,11 @@ function NavBarComponent({ loggedIn, _logout }) {
                         Home
                     </Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/inttracker" className="nav-link">
+                        Initiative Tracker
+                    </Link>
+                </li>
             </ul>
         </nav>
     )
