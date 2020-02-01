@@ -1,0 +1,40 @@
+.initCard {
+    background-color: #d7bf93;
+    padding: 25px 35px;
+    border: 1px solid #ed3231;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.initCard .name-cont .name {
+    font-family: Kurale,serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
+.initCard .roll-cont .roll {
+    font-family: Marcellus SC,serif;
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.initCard .deleteBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #ed3231;
+    color: #fff;
+    font-size: 12px;
+}

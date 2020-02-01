@@ -80,12 +80,12 @@ export default class Initiativetracker extends Component {
                         placeholder = "roll"
                         onChange = {this.handleChangeRoll}
                     />
-                    <button 
+                    <div 
                         className="addBtn"
                         onClick = {this.addButton}
                     >
-                        +
-                    </button>
+                        <i class="fas fa-plus"></i>
+                    </div>
                 </div>
                 <div className="main-cont">
                     {this.state.participants

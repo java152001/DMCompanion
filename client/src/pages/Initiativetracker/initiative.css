@@ -1,14 +1,47 @@
 .intTracker {
     height: 100vh;
-    background-color: #066a65;
+    background-color: #c6ad7d;
     padding-top: 100px;
+}
+
+.intTracker .newEntry {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.intTracker .newEntry input {
+    background-color: #d7bf93;
+    border: 1px solid #9b865c;
+    border-radius: 5px;
+    padding: 8px;
+    resize: none;
+    font-family: Marcellus,serif;
+    margin-right: 10px;
+}
+
+.intTracker .newEntry .addBtn {
+    font-family: Marcellus,serif;
+    line-height: 1;
+    color: #eed4c1;
+    font-size: 16px;
+    margin-bottom: 0;
+    padding: 8px 15px;
+    background-color: #ed3231;
+    box-shadow: 2px 2px 20px rgba(0,0,0,.4);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .intTracker .main-cont {
     width: 530px;
-    height: 700px;
-    padding: 0 15px;
+    min-height: 700px;
+    padding: 15px;
     margin: 0 auto;
     border: 1px solid #000;
-    background-color: #416c14;
+    border-radius: 5px;
+    background-color: #eae0bb;
 }
