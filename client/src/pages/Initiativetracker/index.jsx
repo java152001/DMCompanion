@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import InitCard from "../../components/InitCard";
+import InitCont from "../../components/InitCont";
 import "./initiative.css";
 
 export default class Initiativetracker extends Component {
@@ -8,30 +8,43 @@ export default class Initiativetracker extends Component {
         this.state = {
             newName: '',
             newRoll: 0,
+            newHP: 0,
             participants: [
                 {
                     name: "Javanator",
-                    roll: 12
+                    hpMax: 23,
+                    hpCurrent: 20,
+                    roll: 12,
+                    alignment: "good"
                 },
                 {
                     name: "Sassywaifu",
-                    roll: 14
+                    hpMax: 19,
+                    hpCurrent: 19,
+                    roll: 14,
+                    alignment: "good"
                 },
                 {
                     name: "Goblin Ringleader",
-                    roll: 7
+                    hpMax: 12,
+                    hpCurrent: 12,
+                    roll: 7,
+                    alignment: "evil"
                 },
                 {
                     name: "Goblin Henchman",
-                    roll: 9
+                    hpMax: 7,
+                    hpCurrent: 5,
+                    roll: 9,
+                    alignment: "evil"
                 }
             ]
         }
 
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeRoll = this.handleChangeRoll.bind(this);
+        this.handleChangeHP = this.handleChangeHP.bind(this);
         this.addButton = this.addButton.bind(this);
-        this.removeBtn = this.removeBtn.bind(this);
     }
 
     handleChangeName(e) {
@@ -46,23 +59,19 @@ export default class Initiativetracker extends Component {
         })
     }
 
-    addButton() {
-        const participantList = this.state.participants;
-
-        participantList.push({name: this.state.newName, roll: this.state.newRoll});
-
+    handleChangeHP(e) {
         this.setState({
-            participants: participantList
+            newHP: e.target.value
         })
     }
 
-    removeBtn(i) {
+    addButton() {
         const participantList = this.state.participants;
 
-        participantList.splice(i, 1);
+        participantList.push({name: this.state.newName, roll: parseInt(this.state.newRoll), hpMax: parseInt(this.state.newHP), hpCurrent: parseInt(this.state.newHP)});
 
         this.setState({
-           participants: participantList
+            participants: participantList
         })
     }
 
@@ -80,25 +89,22 @@ export default class Initiativetracker extends Component {
                         placeholder = "roll"
                         onChange = {this.handleChangeRoll}
                     />
+                    <input
+                        type="number"
+                        placeholder = "Max HP"
+                        onChange = {this.handleChangeHP}
+                    />
                     <div 
                         className="addBtn"
                         onClick = {this.addButton}
                     >
-                        <i class="fas fa-plus"></i>
+                        <i className="fas fa-plus"></i>
                     </div>
                 </div>
                 <div className="main-cont">
-                    {this.state.participants
-                    .sort((a, b) => b.roll - a.roll)
-                    .map((participant, i) => (
-                        <InitCard
-                            name = {participant.name}
-                            roll = {participant.roll}
-                            key = {i}
-                            number = {i}
-                            delete = {this.removeBtn}
-                        />
-                    ))}
+                    <InitCont
+                        participants = {this.state.participants}
+                    />
                 </div>
             </div>
         )

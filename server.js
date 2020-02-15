@@ -24,6 +24,7 @@ app.use(
 	})
 )
 app.use(bodyParser.json());
+app.use(express.static("./client/dist"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dndcalendar",
 	{
