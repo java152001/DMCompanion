@@ -12,95 +12,27 @@ class InitCard extends Component {
     componentDidMount() {
         this.setState({
             hpCurrent: this.props.hpCurrent,
-            hpMax: this.props.hpMax,
+            id : this.props.id,
             participantNumber: this.props.participantNumber
         })
     }
 
     componentDidUpdate() {
         const newProps = this.props;
-        let newStats = newProps.participantNumber;
-        let oldStats = this.state.participantNumber;
+        let newStats = newProps.hpCurrent;
+        let oldStats = this.state.hpCurrent;
         // console.log(oldStats);
-
         if (newStats !== oldStats) {
             this.setState({
-                hpCurrent: newProps.hpCurrent,
-                hpMax: newProps.hpMax,
-                participantNumber: newStats
+                hpCurrent: newProps.hpCurrent
             })
         }
-    }
 
-    checkDeath = (hp) => {
-        if (hp <= 0 ) {
-            return true
-        }
-    }
-
-    checkMax = (hp) => {
-        if (hp >= this.props.hpMax) {
-            return true
-        }
-    }
-
-    decOne = () => {
-        let hpNow = this.state.hpCurrent;
-        hpNow--;
-        if (this.checkDeath(hpNow)) {
+        if (newStats.participantNumber !== this.state.participantNumber) {
             this.setState({
-                hpCurrent: 0
+                participantNumber: newStats.participantNumber
             })
-        }
-        else {
-            this.setState({
-                hpCurrent: hpNow
-            })
-        }
-    }
-
-    decFive = () => {
-        let hpNow = this.state.hpCurrent;
-        hpNow = hpNow - 5;
-        if (this.checkDeath(hpNow)) {
-            this.setState({
-                hpCurrent: 0
-            })
-        }
-        else {
-            this.setState({
-                hpCurrent: hpNow
-            })
-        }
-    }
-
-    addOne = () => {
-        let hpNow = this.state.hpCurrent;
-        hpNow++;
-        if (this.checkMax(hpNow)) {
-            this.setState({
-                hpCurrent: this.props.hpMax
-            })
-        }
-        else {
-            this.setState({
-                hpCurrent: hpNow
-            })
-        }
-    }
-
-    addFive = () => {
-        let hpNow = this.state.hpCurrent;
-        hpNow = hpNow + 5;
-        if (this.checkMax(hpNow)) {
-            this.setState({
-                hpCurrent: this.props.hpMax
-            })
-        }
-        else {
-            this.setState({
-                hpCurrent: hpNow
-            })
+            console.log("participant Render")
         }
     }
 
@@ -113,29 +45,29 @@ class InitCard extends Component {
                 <div className="hpRollCont">
                     <div 
                         className="decOne"
-                        onClick = {this.decOne}
+                        onClick = {() => this.props.decOne(this.props.id)}
                         style={{ backgroundImage: `url("images/down-arrow.png")` }}
                         >
                             1
                     </div>
                     <div 
                         className="decFive"
-                        onClick = {this.decFive}
+                        onClick = {() => this.props.decFive(this.props.id)}
                         style={{ backgroundImage: `url("images/down-arrow.png")` }}
                         >
                             5
                     </div>
-                    <h2 className="hpText">{this.state.hpCurrent} / <span className="hpMax">{this.state.hpMax}</span></h2>
+                    <h2 className="hpText">{this.state.hpCurrent} / <span className="hpMax">{this.props.hpMax}</span></h2>
                     <div 
                         className="addOne"
-                        onClick = {this.addOne}
+                        onClick = {() => this.props.addOne(this.props.id)}
                         style={{ backgroundImage: `url("images/up-arrow.png")` }}
                         >
                             1
                     </div>
                     <div 
                         className="addFive"
-                        onClick = {this.addFive}
+                        onClick = {() => this.props.addFive(this.props.id)}
                         style={{ backgroundImage: `url("images/up-arrow.png")` }}
                         >
                             5

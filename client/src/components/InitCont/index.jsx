@@ -26,6 +26,7 @@ export default class InitiativeTracker extends Component {
 
         if (updatedParticipantsNumber !== this.state.participantsNumber) {
             this.setState({
+                participants: newProps.participants,
                 participantsNumber: updatedParticipantsNumber
             })
         }
@@ -55,8 +56,12 @@ export default class InitiativeTracker extends Component {
                             alignment = {participant.alignment}
                             participantNumber = {this.state.participantsNumber}
                             key = {i}
-                            number = {i}
+                            id = {participant.id}
                             delete = {this.removeBtn}
+                            addOne = {this.props.addOne}
+                            addFive = {this.props.addFive}
+                            decOne = {this.props.decOne}
+                            decFive = {this.props.decFive}
                         />
                     ))
                 }
