@@ -25,7 +25,6 @@ class InitCard extends Component {
         const newProps = this.props;
         let newStats = newProps.hpCurrent;
         let oldStats = this.state.hpCurrent;
-        // console.log(oldStats);
         if (newStats !== oldStats) {
             this.setState({
                 hpCurrent: newProps.hpCurrent
@@ -60,33 +59,15 @@ class InitCard extends Component {
                 </div>
                 <div className="hpRollCont">
                     <div 
-                        className="decOne"
-                        onClick = {() => this.props.decOne(this.props.id)}
-                        style={{ backgroundImage: `url("images/down-arrow.png")` }}
+                        className="damage"
+                        style={{ backgroundImage: 'url("images/damage.png")' }}
                         >
-                            1
-                    </div>
-                    <div 
-                        className="decFive"
-                        onClick = {() => this.props.decFive(this.props.id)}
-                        style={{ backgroundImage: `url("images/down-arrow.png")` }}
-                        >
-                            5
                     </div>
                     <h2 className="hpText">{this.state.hpCurrent} / <span className="hpMax">{this.props.hpMax}</span></h2>
                     <div 
-                        className="addOne"
-                        onClick = {() => this.props.addOne(this.props.id)}
-                        style={{ backgroundImage: `url("images/up-arrow.png")` }}
+                        className="healing"
+                        style={{ backgroundImage: 'url("images/healing.png")' }}
                         >
-                            1
-                    </div>
-                    <div 
-                        className="addFive"
-                        onClick = {() => this.props.addFive(this.props.id)}
-                        style={{ backgroundImage: `url("images/up-arrow.png")` }}
-                        >
-                            5
                     </div>
                     <div className="roll-cont">
                         <h2 className="roll">{this.props.roll}</h2>
