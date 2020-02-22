@@ -9,6 +9,7 @@ export default class Initiativetracker extends Component {
             newName: '',
             newRoll: 0,
             newHP: 0,
+            newMulti: 1,
             currId: 4,
             newAlignment: "good",
             participants: [
@@ -51,6 +52,7 @@ export default class Initiativetracker extends Component {
         this.handleChangeRoll = this.handleChangeRoll.bind(this);
         this.handleChangeHP = this.handleChangeHP.bind(this);
         this.handleAlignmentChange = this.handleAlignmentChange.bind(this);
+        this.handleMultiChange = this.handleMultiChange.bind(this);
         this.addButton = this.addButton.bind(this);
         this.decOne = this.decOne.bind(this);
         this.decFive = this.decFive.bind(this);
@@ -84,17 +86,38 @@ export default class Initiativetracker extends Component {
         })
     }
 
+    handleMultiChange(e) {
+        this.setState({
+            newMulti: parseInt(e.target.value)
+        })
+    }
+
     addButton() {
         const participantList = this.state.participants;
 
-        let id = this.state.currId + 1;
+        let id = this.state.currId;
 
-        participantList.push({name: this.state.newName, roll: parseInt(this.state.newRoll), hpMax: parseInt(this.state.newHP), hpCurrent: parseInt(this.state.newHP), alignment: this.state.newAlignment, id: id});
+        if(this.state.newMulti > 1) {
+            for (let i = 1; i <= this.state.newMulti; i++) {
+                id++;
+                participantList.push({name: this.state.newName, roll: parseInt(this.state.newRoll), hpMax: parseInt(this.state.newHP), hpCurrent: parseInt(this.state.newHP), alignment: this.state.newAlignment, id: id});
+            }
 
-        this.setState({
-            participants: participantList,
-            currId: id
-        });
+            this.setState({
+                participants: participantList,
+                currId: id
+            })
+        }
+        else {
+            id++;
+
+            participantList.push({name: this.state.newName, roll: parseInt(this.state.newRoll), hpMax: parseInt(this.state.newHP), hpCurrent: parseInt(this.state.newHP), alignment: this.state.newAlignment, id: id});
+
+            this.setState({
+                participants: participantList,
+                currId: id
+            });
+        }
     }
 
     checkDeath = (hp) => {
@@ -209,12 +232,19 @@ export default class Initiativetracker extends Component {
                         onChange = {this.handleChangeHP}
                     />
                     <select
-                        class="alignmentSelect"
+                        className = "alignmentSelect"
                         onChange = {this.handleAlignmentChange}
+                        defaultValue = {"good"}
                     >
-                        <option value="good" selected>Ally</option>
+                        <option value="good">Ally</option>
                         <option value="evil">Enemy</option>
                     </select>
+                    <input
+                        type="number"
+                        placeholder = "1"
+                        defaultValue = {1}
+                        onChange = {this.handleMultiChange}
+                    />
                     <div 
                         className="addBtn"
                         onClick = {this.addButton}

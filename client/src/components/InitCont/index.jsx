@@ -22,7 +22,6 @@ export default class InitiativeTracker extends Component {
     componentDidUpdate() {
         const newProps = this.props;
         let updatedParticipantsNumber = newProps.participants.length;
-        console.log(newProps);
 
         if (updatedParticipantsNumber !== this.state.participantsNumber) {
             this.setState({

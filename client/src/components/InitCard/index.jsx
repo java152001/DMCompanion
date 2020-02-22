@@ -32,7 +32,6 @@ class InitCard extends Component {
             this.setState({
                 participantNumber: newStats.participantNumber
             })
-            console.log("participant Render")
         }
     }
 
