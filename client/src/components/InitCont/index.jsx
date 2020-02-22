@@ -62,6 +62,7 @@ export default class InitiativeTracker extends Component {
                             addFive = {this.props.addFive}
                             decOne = {this.props.decOne}
                             decFive = {this.props.decFive}
+                            updateRoll = {this.props.handleUpdateRoll}
                         />
                     ))
                 }

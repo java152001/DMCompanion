@@ -5,10 +5,12 @@ class InitCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            showRollChange: false
+            showRollChange: false,
+            updateRollNumber: this.props.roll
         }
 
         this.showUpdateRoll = this.showUpdateRoll.bind(this);
+        this.handleUpdateRollChange = this.handleUpdateRollChange.bind(this);
     }
 
     componentDidMount() {
@@ -42,6 +44,12 @@ class InitCard extends Component {
         this.setState({
             showRollChange: !currentShowRollState
         }) 
+    }
+
+    handleUpdateRollChange(e) {
+        this.setState({
+            updateRollNumber: parseInt(e.target.value)
+        })
     }
 
     render() {
@@ -95,9 +103,12 @@ class InitCard extends Component {
                                     className = "updateRollInput"
                                     type = 'text'
                                     defaultValue = { this.props.roll }
+                                    onChange = { this.handleUpdateRollChange }
                                 />
                                 <button 
-                                    className="submit">
+                                    className="submit"
+                                    onClick = {() => { this.props.updateRoll(this.props.id, this.state.updateRollNumber); this.showUpdateRoll(); }}
+                                    >
                                         Submit
                                 </button>
                         </div>
