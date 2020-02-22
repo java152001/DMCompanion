@@ -10,6 +10,7 @@ export default class Initiativetracker extends Component {
             newRoll: 0,
             newHP: 0,
             currId: 4,
+            newAlignment: "good",
             participants: [
                 {
                     name: "Javanator",
@@ -49,6 +50,7 @@ export default class Initiativetracker extends Component {
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeRoll = this.handleChangeRoll.bind(this);
         this.handleChangeHP = this.handleChangeHP.bind(this);
+        this.handleAlignmentChange = this.handleAlignmentChange.bind(this);
         this.addButton = this.addButton.bind(this);
         this.decOne = this.decOne.bind(this);
         this.decFive = this.decFive.bind(this);
@@ -76,12 +78,18 @@ export default class Initiativetracker extends Component {
         })
     }
 
+    handleAlignmentChange(e) {
+        this.setState({
+            newAlignment: e.target.value
+        })
+    }
+
     addButton() {
         const participantList = this.state.participants;
 
         let id = this.state.currId + 1;
 
-        participantList.push({name: this.state.newName, roll: parseInt(this.state.newRoll), hpMax: parseInt(this.state.newHP), hpCurrent: parseInt(this.state.newHP), id: id});
+        participantList.push({name: this.state.newName, roll: parseInt(this.state.newRoll), hpMax: parseInt(this.state.newHP), hpCurrent: parseInt(this.state.newHP), alignment: this.state.newAlignment, id: id});
 
         this.setState({
             participants: participantList,
@@ -200,6 +208,13 @@ export default class Initiativetracker extends Component {
                         placeholder = "Max HP"
                         onChange = {this.handleChangeHP}
                     />
+                    <select
+                        class="alignmentSelect"
+                        onChange = {this.handleAlignmentChange}
+                    >
+                        <option value="good" selected>Ally</option>
+                        <option value="evil">Enemy</option>
+                    </select>
                     <div 
                         className="addBtn"
                         onClick = {this.addButton}
