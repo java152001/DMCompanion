@@ -56,6 +56,7 @@ export default class InitiativeTracker extends Component {
                             alignment = {participant.alignment}
                             participantNumber = {this.state.participantsNumber}
                             key = {i}
+                            number = {i}
                             id = {participant.id}
                             delete = {this.removeBtn}
                             addOne = {this.props.addOne}
