@@ -48,6 +48,27 @@
     margin-bottom: 0;
 }
 
+.initCard .roll-cont .updateRollBtn {
+    background-color: blue;
+    position: absolute;
+    right: 12px;
+    top: 52%;
+    transform: translateY(-50%);
+}
+
+.initCard .roll-cont .updateRollField {
+    position: absolute;
+    right: -285px;
+    top: 52%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.initCard .roll-cont .updateRollField.show {
+    opacity: 1;
+}
+
 .initCard .hpText .hpMax {
     font-weight: bold;
 }

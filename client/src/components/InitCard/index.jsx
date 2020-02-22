@@ -5,8 +5,10 @@ class InitCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            showRollChange: false
         }
+
+        this.showUpdateRoll = this.showUpdateRoll.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +35,13 @@ class InitCard extends Component {
                 participantNumber: newStats.participantNumber
             })
         }
+    }
+
+    showUpdateRoll() {
+        const currentShowRollState = this.state.showRollChange;
+        this.setState({
+            showRollChange: !currentShowRollState
+        }) 
     }
 
     render() {
@@ -73,6 +82,25 @@ class InitCard extends Component {
                     </div>
                     <div className="roll-cont">
                         <h2 className="roll">{this.props.roll}</h2>
+                        <div 
+                            className = "updateRollBtn"
+                            onClick = { this.showUpdateRoll }
+                            >
+                                +
+                        </div>
+                        <div 
+                            className = {this.state.showRollChange ? "updateRollField show" : "updateRollField" }
+                            >
+                                <input
+                                    className = "updateRollInput"
+                                    type = 'text'
+                                    defaultValue = { this.props.roll }
+                                />
+                                <button 
+                                    className="submit">
+                                        Submit
+                                </button>
+                        </div>
                     </div>
                 </div>
                 <div 

@@ -259,6 +259,7 @@ export default class Initiativetracker extends Component {
                         decFive = { this.decFive }
                         addOne = { this.addOne }
                         addFive = { this.addFive }
+                        handleRollUpdate = { this.handleRollUpdate }
                     />
                 </div>
             </div>
