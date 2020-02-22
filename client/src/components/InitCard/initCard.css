@@ -48,6 +48,36 @@
     margin-bottom: 0;
 }
 
+.initCard .roll-cont .updateRollBtn {
+    background-color: blue;
+    position: absolute;
+    right: 12px;
+    top: 52%;
+    transform: translateY(-50%);
+}
+
+.initCard .roll-cont .updateRollField {
+    position: absolute;
+    right: -285px;
+    top: 52%;
+    transform: translate(500px, -50%);
+    opacity: 0;
+    transition: transform .7s ease, opacity .7s ease;
+}
+
+.initCard .roll-cont .updateRollField.show {
+    opacity: 1;
+    transform: translate(0px, -50%);
+}
+
+.initCard .updateRollField .submit {
+    pointer-events: none;
+}
+
+.initCard .roll-cont .updateRollField.show .submit {
+    pointer-events: auto;
+}
+
 .initCard .hpText .hpMax {
     font-weight: bold;
 }

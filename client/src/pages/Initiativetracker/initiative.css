@@ -2,6 +2,7 @@
     height: 100vh;
     background-color: #c6ad7d;
     padding-top: 100px;
+    overflow: hidden;
 }
 
 .intTracker .newEntry {

@@ -53,6 +53,7 @@ export default class Initiativetracker extends Component {
         this.handleChangeHP = this.handleChangeHP.bind(this);
         this.handleAlignmentChange = this.handleAlignmentChange.bind(this);
         this.handleMultiChange = this.handleMultiChange.bind(this);
+        this.handleUpdateRoll = this.handleUpdateRoll.bind(this);
         this.addButton = this.addButton.bind(this);
         this.decOne = this.decOne.bind(this);
         this.decFive = this.decFive.bind(this);
@@ -71,6 +72,21 @@ export default class Initiativetracker extends Component {
     handleChangeRoll(e) {
         this.setState({
             newRoll: e.target.value
+        })
+    }
+
+    handleUpdateRoll(id, updatedRoll) {
+        console.log(id);
+
+        let newRoll = this.state.participants.map((participant) => {
+            if (participant.id === id) {
+                participant.roll = updatedRoll
+            }
+            return participant
+        })
+
+        this.setState({
+            participants: newRoll
         })
     }
 
@@ -259,6 +275,7 @@ export default class Initiativetracker extends Component {
                         decFive = { this.decFive }
                         addOne = { this.addOne }
                         addFive = { this.addFive }
+                        handleUpdateRoll = { this.handleUpdateRoll }
                     />
                 </div>
             </div>

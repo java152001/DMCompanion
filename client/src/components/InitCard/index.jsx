@@ -5,8 +5,12 @@ class InitCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            showRollChange: false,
+            updateRollNumber: this.props.roll
         }
+
+        this.showUpdateRoll = this.showUpdateRoll.bind(this);
+        this.handleUpdateRollChange = this.handleUpdateRollChange.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +37,19 @@ class InitCard extends Component {
                 participantNumber: newStats.participantNumber
             })
         }
+    }
+
+    showUpdateRoll() {
+        const currentShowRollState = this.state.showRollChange;
+        this.setState({
+            showRollChange: !currentShowRollState
+        }) 
+    }
+
+    handleUpdateRollChange(e) {
+        this.setState({
+            updateRollNumber: parseInt(e.target.value)
+        })
     }
 
     render() {
@@ -73,6 +90,28 @@ class InitCard extends Component {
                     </div>
                     <div className="roll-cont">
                         <h2 className="roll">{this.props.roll}</h2>
+                        <div 
+                            className = "updateRollBtn"
+                            onClick = { this.showUpdateRoll }
+                            >
+                                +
+                        </div>
+                        <div 
+                            className = {this.state.showRollChange ? "updateRollField show" : "updateRollField" }
+                            >
+                                <input
+                                    className = "updateRollInput"
+                                    type = 'text'
+                                    defaultValue = { this.props.roll }
+                                    onChange = { this.handleUpdateRollChange }
+                                />
+                                <button 
+                                    className="submit"
+                                    onClick = {() => { this.props.updateRoll(this.props.id, this.state.updateRollNumber); this.showUpdateRoll(); }}
+                                    >
+                                        Submit
+                                </button>
+                        </div>
                     </div>
                 </div>
                 <div 
