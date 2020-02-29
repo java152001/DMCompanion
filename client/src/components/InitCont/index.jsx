@@ -44,6 +44,9 @@ export default class InitiativeTracker extends Component {
     render() {
         return (
             <div className="initCont">
+                <div className="titleCont">
+                    Current Combatants
+                </div>
                 {this.state.participants
                     .sort((a, b) => b.roll - a.roll)
                     .map((participant, i) => (
@@ -64,6 +67,12 @@ export default class InitiativeTracker extends Component {
                         />
                     ))
                 }
+                <div className="clearAll"
+                    onClick = { this.clearInputs }
+                    >
+                        <i class="fas fa-redo-alt"></i>
+                        <span>Clear</span>
+                </div>
             </div>
         )
     }
