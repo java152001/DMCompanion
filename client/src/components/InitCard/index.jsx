@@ -5,12 +5,16 @@ class InitCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            showRollChange: false,
-            updateRollNumber: this.props.roll
+            showRollChange : false,
+            updateRollNumber : this.props.roll,
+            showDamage : false,
+            showHealing : false
         }
 
         this.showUpdateRoll = this.showUpdateRoll.bind(this);
         this.handleUpdateRollChange = this.handleUpdateRollChange.bind(this);
+        this.showHealing = this.showHealing.bind(this);
+        this.showDamage = this.showDamage.bind(this);
     }
 
     componentDidMount() {
@@ -38,6 +42,20 @@ class InitCard extends Component {
         }
     }
 
+    showHealing() {
+        let currentHealingState = this.state.showHealing;
+        this.setState({ 
+            showHealing : !currentHealingState
+        })
+    }
+
+    showDamage() {let 
+        currentDamageState = this.state.showDamage;
+        this.setState({ 
+            showDamage : !currentDamageState
+        })
+    }
+
     showUpdateRoll() {
         const currentShowRollState = this.state.showRollChange;
         this.setState({
@@ -61,12 +79,14 @@ class InitCard extends Component {
                     <div 
                         className="damage"
                         style={{ backgroundImage: 'url("images/damage.png")' }}
+                        onClick = { this.showDamage }
                         >
                     </div>
                     <h2 className="hpText">{this.state.hpCurrent} / <span className="hpMax">{this.props.hpMax}</span></h2>
                     <div 
                         className="healing"
                         style={{ backgroundImage: 'url("images/healing.png")' }}
+                        onClick = { this.showHealing }
                         >
                     </div>
                     <div className="roll-cont">
@@ -93,6 +113,36 @@ class InitCard extends Component {
                                         Submit
                                 </button>
                         </div>
+                    </div>
+                    <div className = { this.state.showHealing ? "healingInput show" : "healingInput"}>
+                        <span>Healing Received</span>
+                        <input 
+                            className = "updateInput"
+                            type = "number"
+                            placeholder = "Amount"
+                            onChange = { this.handleHealUpdate }
+                        />
+                        <button
+                            className = "healingBtn"
+                            // onClick = {() => { this.props.handleHeal(this.state.newHealNumber) }}
+                        >
+                            Heal
+                        </button>
+                    </div>
+                    <div className = { this.state.showDamage ? "damageInput show" : "damageInput"}>
+                    <span>Damage Taken</span>
+                        <input 
+                            className = "updateInput"
+                            type = "number"
+                            placeholder = "Amount"
+                            onChange = { this.handleDamageUpdate }
+                        />
+                        <button
+                            className = "damageBtn"
+                            // onClick = {() => { this.props.handleHeal(this.state.newHealNumber) }}
+                        >
+                            Hit
+                        </button>
                     </div>
                 </div>
                 <div 
