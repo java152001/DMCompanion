@@ -10,6 +10,7 @@ export default class InitiativeTracker extends Component {
         }
 
         this.removeBtn = this.removeBtn.bind(this);
+        this.clearAll = this.clearAll.bind(this);
     }
 
     componentDidMount() {
@@ -41,6 +42,12 @@ export default class InitiativeTracker extends Component {
         })
     }
 
+    clearAll() {
+        this.setState({
+            participants : []
+        })
+    }
+
     render() {
         return (
             <div className="initCont">
@@ -68,7 +75,7 @@ export default class InitiativeTracker extends Component {
                     ))
                 }
                 <div className="clearAll"
-                    onClick = { this.clearInputs }
+                    onClick = { this.clearAll }
                     >
                         <i class="fas fa-redo-alt"></i>
                         <span>Clear</span>
