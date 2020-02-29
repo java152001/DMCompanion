@@ -53,6 +53,7 @@ export default class Initiativetracker extends Component {
         this.handleChangeHP = this.handleChangeHP.bind(this);
         this.handleAlignmentChange = this.handleAlignmentChange.bind(this);
         this.handleMultiChange = this.handleMultiChange.bind(this);
+        this.clearInputs = this.clearInputs.bind(this);
         this.handleUpdateRoll = this.handleUpdateRoll.bind(this);
         this.addButton = this.addButton.bind(this);
         this.checkDeath = this.checkDeath.bind(this);
@@ -106,6 +107,22 @@ export default class Initiativetracker extends Component {
         })
     }
 
+    clearInputs() {
+        this.setState({
+            newHP : 0,
+            newAlignment : "",
+            newName : "",
+            newRoll : 0        
+        })
+
+        document.body.querySelector("#name").value = "";
+        document.body.querySelector(".alignmentSelect").value = "type";
+        document.body.querySelector("#hp").value = "";
+        document.body.querySelector("#roll").value = "";
+
+        console.log('clear fired');
+    }
+ 
     addButton() {
         const participantList = this.state.participants;
 
@@ -197,21 +214,24 @@ export default class Initiativetracker extends Component {
                         className = "alignmentSelect"
                         onChange = {this.handleAlignmentChange}
                     >
-                        <option selected disabled>Type</option>
+                        <option selected disabled value="type">Type</option>
                         <option value="good">Ally</option>
                         <option value="evil">Enemy</option>
                     </select>
                     <input
+                        id = "name"
                         type="text"
                         placeholder = "Name"
                         onChange = {this.handleChangeName}
                     />
                     <input
+                        id = "hp"
                         type="number"
                         placeholder = "Max HP"
                         onChange = {this.handleChangeHP}
                     />
                     <input 
+                        id = "roll"
                         type="number"
                         placeholder = "Roll"
                         onChange = {this.handleChangeRoll}
@@ -227,6 +247,12 @@ export default class Initiativetracker extends Component {
                         onClick = {this.addButton}
                     >
                         <i className="fas fa-plus"></i>
+                    </div>
+                    <div className="clearBtn"
+                        onClick = { this.clearInputs }
+                    >
+                        <i class="fas fa-redo-alt"></i>
+                        <span>Clear</span>
                     </div>
                 </div>
                 <div className="main-cont">

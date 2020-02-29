@@ -6,6 +6,7 @@
 }
 
 .intTracker .newEntry {
+    position: relative;
     display: flex;
     justify-content: center;
     padding: 40px 0;
@@ -13,6 +14,15 @@
     margin: 0 auto 25px;
     background-color: #6B5637;
     border-radius: 8px;
+}
+
+.intTracker .newEntry .alignmentSelect {
+    margin-right: 30px;
+    border-radius: 8px;
+}
+
+.intTracker .newEntry .alignmentSelect:focus {
+    outline: none;
 }
 
 .intTracker .newEntry input {
@@ -23,7 +33,7 @@
     padding: 8px;
     resize: none;
     font-family: Marcellus,serif;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 .intTracker .newEntry input:focus {
@@ -40,10 +50,25 @@
     background-color: #ed3231;
     box-shadow: 2px 2px 20px rgba(0,0,0,.4);
     border-radius: 5px;
+    border: 1px solid #000;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.intTracker .newEntry .clearBtn {
+    position: absolute;
+    left: 10px;
+    bottom: 5px;
+    color: #E3CAB6;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.intTracker .newEntry .clearBtn span {
+    font-size: 14px;
+    margin-left: 5px;
 }
 
 .intTracker .main-cont {
@@ -53,5 +78,5 @@
     margin: 0 auto;
     border: 1px solid #000;
     border-radius: 5px;
-    background-color: #eae0bb;
+    background-color: #FCF1E0;
 }
