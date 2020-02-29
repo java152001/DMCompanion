@@ -8,13 +8,17 @@ class InitCard extends Component {
             showRollChange : false,
             updateRollNumber : this.props.roll,
             showDamage : false,
-            showHealing : false
+            showHealing : false,
+            newDamageNumber : 0,
+            newHealNumber : 0
         }
 
         this.showUpdateRoll = this.showUpdateRoll.bind(this);
         this.handleUpdateRollChange = this.handleUpdateRollChange.bind(this);
         this.showHealing = this.showHealing.bind(this);
         this.showDamage = this.showDamage.bind(this);
+        this.handleHealUpdate = this.handleHealUpdate.bind(this);
+        this.handleDamageUpdate = this.handleDamageUpdate.bind(this);
     }
 
     componentDidMount() {
@@ -66,6 +70,18 @@ class InitCard extends Component {
     handleUpdateRollChange(e) {
         this.setState({
             updateRollNumber: parseInt(e.target.value)
+        })
+    }
+
+    handleHealUpdate(e) {
+        this.setState({
+            newHealNumber : parseInt(e.target.value)
+        })
+    }
+
+    handleDamageUpdate(e) {
+        this.setState({
+            newDamageNumber : parseInt(e.target.value)
         })
     }
 
@@ -124,7 +140,7 @@ class InitCard extends Component {
                         />
                         <button
                             className = "healingBtn"
-                            // onClick = {() => { this.props.handleHeal(this.state.newHealNumber) }}
+                            onClick = {() => { this.props.handleHeal(this.props.id, this.state.newHealNumber) }}
                         >
                             Heal
                         </button>
@@ -139,7 +155,7 @@ class InitCard extends Component {
                         />
                         <button
                             className = "damageBtn"
-                            // onClick = {() => { this.props.handleHeal(this.state.newHealNumber) }}
+                            onClick = {() => { this.props.handleDamage(this.props.id, this.state.newDamageNumber) }}
                         >
                             Hit
                         </button>

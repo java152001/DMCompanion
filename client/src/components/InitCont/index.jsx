@@ -58,10 +58,8 @@ export default class InitiativeTracker extends Component {
                             number = {i}
                             id = {participant.id}
                             delete = {this.removeBtn}
-                            addOne = {this.props.addOne}
-                            addFive = {this.props.addFive}
-                            decOne = {this.props.decOne}
-                            decFive = {this.props.decFive}
+                            handleDamage = {this.props.handleDamage}
+                            handleHeal = {this.props.handleHeal}
                             updateRoll = {this.props.handleUpdateRoll}
                         />
                     ))
