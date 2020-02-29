@@ -193,35 +193,35 @@ export default class Initiativetracker extends Component {
         return (
             <div className="intTracker">
                 <div className="newEntry">
+                    <select
+                        className = "alignmentSelect"
+                        onChange = {this.handleAlignmentChange}
+                    >
+                        <option selected disabled>Type</option>
+                        <option value="good">Ally</option>
+                        <option value="evil">Enemy</option>
+                    </select>
                     <input
                         type="text"
-                        placeholder = "name"
+                        placeholder = "Name"
                         onChange = {this.handleChangeName}
-                    />
-                    <input 
-                        type="number"
-                        placeholder = "roll"
-                        onChange = {this.handleChangeRoll}
                     />
                     <input
                         type="number"
                         placeholder = "Max HP"
                         onChange = {this.handleChangeHP}
                     />
-                    <select
-                        className = "alignmentSelect"
-                        onChange = {this.handleAlignmentChange}
-                        defaultValue = {"good"}
-                    >
-                        <option value="good">Ally</option>
-                        <option value="evil">Enemy</option>
-                    </select>
-                    <input
+                    <input 
+                        type="number"
+                        placeholder = "Roll"
+                        onChange = {this.handleChangeRoll}
+                    />
+                    {/* <input
                         type="number"
                         placeholder = "1"
                         defaultValue = {1}
                         onChange = {this.handleMultiChange}
-                    />
+                    /> */}
                     <div 
                         className="addBtn"
                         onClick = {this.addButton}

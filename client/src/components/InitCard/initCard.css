@@ -33,12 +33,13 @@
 }
 
 .hpRollCont > div {
-    background-size: contain;
-    background-repeat: no-repeat;
     padding: 10px;
-    min-width: 40px;
-    text-align: center;
     cursor: pointer;
+}
+
+.hpRollCont .damage i,
+.hpRollCont .healing i {
+    font-size: 28px;
 }
 
 .initCard .hpRollCont .hpText, 

@@ -94,16 +94,16 @@ class InitCard extends Component {
                 <div className="hpRollCont">
                     <div 
                         className="damage"
-                        style={{ backgroundImage: 'url("images/damage.png")' }}
                         onClick = { this.showDamage }
                         >
+                        <i class="fas fa-arrow-circle-down"></i>
                     </div>
                     <h2 className="hpText">{this.state.hpCurrent} / <span className="hpMax">{this.props.hpMax}</span></h2>
                     <div 
                         className="healing"
-                        style={{ backgroundImage: 'url("images/healing.png")' }}
                         onClick = { this.showHealing }
                         >
+                        <i class="fas fa-arrow-circle-up"></i>
                     </div>
                     <div className="roll-cont">
                         <h2 className="roll">{this.props.roll}</h2>
