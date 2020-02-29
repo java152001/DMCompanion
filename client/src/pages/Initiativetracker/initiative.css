@@ -8,17 +8,26 @@
 .intTracker .newEntry {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    padding: 40px 0;
+    width: 75%;
+    margin: 0 auto 25px;
+    background-color: #6B5637;
+    border-radius: 8px;
 }
 
 .intTracker .newEntry input {
-    background-color: #d7bf93;
-    border: 1px solid #9b865c;
+    background-color: #FCF1E0;
+    color: #857F77;
     border-radius: 5px;
+    border: none;
     padding: 8px;
     resize: none;
     font-family: Marcellus,serif;
     margin-right: 10px;
+}
+
+.intTracker .newEntry input:focus {
+    outline: none;
 }
 
 .intTracker .newEntry .addBtn {

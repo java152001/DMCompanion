@@ -55,12 +55,10 @@ export default class Initiativetracker extends Component {
         this.handleMultiChange = this.handleMultiChange.bind(this);
         this.handleUpdateRoll = this.handleUpdateRoll.bind(this);
         this.addButton = this.addButton.bind(this);
-        this.decOne = this.decOne.bind(this);
-        this.decFive = this.decFive.bind(this);
-        this.addOne = this.addOne.bind(this);
-        this.addFive = this.addFive.bind(this);
         this.checkDeath = this.checkDeath.bind(this);
         this.checkMax = this.checkMax.bind(this);
+        this.handleHeal = this.handleHeal.bind(this);
+        this.handleDamage = this.handleDamage.bind(this);
     }
 
     handleChangeName(e) {
@@ -148,83 +146,46 @@ export default class Initiativetracker extends Component {
         }
     }
 
-    decOne = (id) => {
+    handleHeal = (id, healAmount) => {
         let newHp = this.state.participants.map((participant) => {
             if (participant.id === id) {
                 let hpNow = participant.hpCurrent;
-                hpNow--;
-                if (this.checkDeath(hpNow)) {
-                    participant.hpCurrent = 0;
-                }
-                else {
-                    participant.hpCurrent = hpNow;
-                }
-            }
-            return participant
-        })
-
-        this.setState({
-            participants: newHp
-        })
-    }
-
-    decFive = (id) => {
-        let newHp = this.state.participants.map((participant) => {
-            if (participant.id === id) {
-                let hpNow = participant.hpCurrent;
-                hpNow = hpNow - 5;
-                if (this.checkDeath(hpNow)) {
-                    participant.hpCurrent = 0;
-                }
-                else {
-                    participant.hpCurrent = hpNow;
-                }
-            }
-            return participant
-        })
-
-        this.setState({
-            participants: newHp
-        })
-    }
-
-    addOne = (id) => {
-        let newHp = this.state.participants.map((participant) => {
-            if (participant.id === id) {
-                let hpNow = participant.hpCurrent;
-                hpNow++;
+                hpNow = hpNow + healAmount;
                 if (this.checkMax(hpNow, participant.hpMax)) {
                     participant.hpCurrent = participant.hpMax;
                 }
                 else {
                     participant.hpCurrent = hpNow;
-                }
+                }                
             }
-            return participant
+            return participant;
         })
 
         this.setState({
             participants: newHp
         })
+
+        console.log('heal handled')
     }
 
-    addFive = (id) => {
-        let newHp = this.state.participants.map((participant) => {
-            if (participant.id === id) {
-                let hpNow = participant.hpCurrent;
-                hpNow = hpNow + 5;
-                if (this.checkMax(hpNow, participant.hpMax)) {
-                    participant.hpCurrent = participant.hpMax;
+    handleDamage = (id, damageAmount) => {
+        let newHp = this.state.participants.map((particpant) => {
+            if (particpant.id === id) {
+                let hpNow = particpant.hpCurrent;
+                hpNow = hpNow - damageAmount;
+                if (this.checkDeath(hpNow)) {
+                    particpant.hpCurrent = 0;
                 }
                 else {
-                    participant.hpCurrent = hpNow;
+                    particpant.hpCurrent = hpNow;
                 }
+                console.log('id filtering worked')
             }
-            return participant
+            return particpant;
         })
 
         this.setState({
-            participants: newHp
+            participants : newHp
         })
     }
 
@@ -232,35 +193,35 @@ export default class Initiativetracker extends Component {
         return (
             <div className="intTracker">
                 <div className="newEntry">
+                    <select
+                        className = "alignmentSelect"
+                        onChange = {this.handleAlignmentChange}
+                    >
+                        <option selected disabled>Type</option>
+                        <option value="good">Ally</option>
+                        <option value="evil">Enemy</option>
+                    </select>
                     <input
                         type="text"
-                        placeholder = "name"
+                        placeholder = "Name"
                         onChange = {this.handleChangeName}
-                    />
-                    <input 
-                        type="number"
-                        placeholder = "roll"
-                        onChange = {this.handleChangeRoll}
                     />
                     <input
                         type="number"
                         placeholder = "Max HP"
                         onChange = {this.handleChangeHP}
                     />
-                    <select
-                        className = "alignmentSelect"
-                        onChange = {this.handleAlignmentChange}
-                        defaultValue = {"good"}
-                    >
-                        <option value="good">Ally</option>
-                        <option value="evil">Enemy</option>
-                    </select>
-                    <input
+                    <input 
+                        type="number"
+                        placeholder = "Roll"
+                        onChange = {this.handleChangeRoll}
+                    />
+                    {/* <input
                         type="number"
                         placeholder = "1"
                         defaultValue = {1}
                         onChange = {this.handleMultiChange}
-                    />
+                    /> */}
                     <div 
                         className="addBtn"
                         onClick = {this.addButton}
@@ -271,10 +232,8 @@ export default class Initiativetracker extends Component {
                 <div className="main-cont">
                     <InitCont
                         participants = {this.state.participants}
-                        decOne = { this.decOne }
-                        decFive = { this.decFive }
-                        addOne = { this.addOne }
-                        addFive = { this.addFive }
+                        handleDamage = { this.handleDamage }
+                        handleHeal = { this.handleHeal }
                         handleUpdateRoll = { this.handleUpdateRoll }
                     />
                 </div>

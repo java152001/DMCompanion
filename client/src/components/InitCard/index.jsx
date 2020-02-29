@@ -5,12 +5,20 @@ class InitCard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            showRollChange: false,
-            updateRollNumber: this.props.roll
+            showRollChange : false,
+            updateRollNumber : this.props.roll,
+            showDamage : false,
+            showHealing : false,
+            newDamageNumber : 0,
+            newHealNumber : 0
         }
 
         this.showUpdateRoll = this.showUpdateRoll.bind(this);
         this.handleUpdateRollChange = this.handleUpdateRollChange.bind(this);
+        this.showHealing = this.showHealing.bind(this);
+        this.showDamage = this.showDamage.bind(this);
+        this.handleHealUpdate = this.handleHealUpdate.bind(this);
+        this.handleDamageUpdate = this.handleDamageUpdate.bind(this);
     }
 
     componentDidMount() {
@@ -25,7 +33,6 @@ class InitCard extends Component {
         const newProps = this.props;
         let newStats = newProps.hpCurrent;
         let oldStats = this.state.hpCurrent;
-        // console.log(oldStats);
         if (newStats !== oldStats) {
             this.setState({
                 hpCurrent: newProps.hpCurrent
@@ -37,6 +44,20 @@ class InitCard extends Component {
                 participantNumber: newStats.participantNumber
             })
         }
+    }
+
+    showHealing() {
+        let currentHealingState = this.state.showHealing;
+        this.setState({ 
+            showHealing : !currentHealingState
+        })
+    }
+
+    showDamage() {let 
+        currentDamageState = this.state.showDamage;
+        this.setState({ 
+            showDamage : !currentDamageState
+        })
     }
 
     showUpdateRoll() {
@@ -52,6 +73,18 @@ class InitCard extends Component {
         })
     }
 
+    handleHealUpdate(e) {
+        this.setState({
+            newHealNumber : parseInt(e.target.value)
+        })
+    }
+
+    handleDamageUpdate(e) {
+        this.setState({
+            newDamageNumber : parseInt(e.target.value)
+        })
+    }
+
     render() {
         return(
             <div className={this.props.alignment === "good" ? "initCard good" : "initCard evil"} data-key={this.props.number}>
@@ -60,33 +93,17 @@ class InitCard extends Component {
                 </div>
                 <div className="hpRollCont">
                     <div 
-                        className="decOne"
-                        onClick = {() => this.props.decOne(this.props.id)}
-                        style={{ backgroundImage: `url("images/down-arrow.png")` }}
+                        className="damage"
+                        onClick = { this.showDamage }
                         >
-                            1
-                    </div>
-                    <div 
-                        className="decFive"
-                        onClick = {() => this.props.decFive(this.props.id)}
-                        style={{ backgroundImage: `url("images/down-arrow.png")` }}
-                        >
-                            5
+                        <i class="fas fa-arrow-circle-down"></i>
                     </div>
                     <h2 className="hpText">{this.state.hpCurrent} / <span className="hpMax">{this.props.hpMax}</span></h2>
                     <div 
-                        className="addOne"
-                        onClick = {() => this.props.addOne(this.props.id)}
-                        style={{ backgroundImage: `url("images/up-arrow.png")` }}
+                        className="healing"
+                        onClick = { this.showHealing }
                         >
-                            1
-                    </div>
-                    <div 
-                        className="addFive"
-                        onClick = {() => this.props.addFive(this.props.id)}
-                        style={{ backgroundImage: `url("images/up-arrow.png")` }}
-                        >
-                            5
+                        <i class="fas fa-arrow-circle-up"></i>
                     </div>
                     <div className="roll-cont">
                         <h2 className="roll">{this.props.roll}</h2>
@@ -112,6 +129,36 @@ class InitCard extends Component {
                                         Submit
                                 </button>
                         </div>
+                    </div>
+                    <div className = { this.state.showHealing ? "healingInput show" : "healingInput"}>
+                        <span>Healing Received</span>
+                        <input 
+                            className = "updateInput"
+                            type = "number"
+                            placeholder = "Amount"
+                            onChange = { this.handleHealUpdate }
+                        />
+                        <button
+                            className = "healingBtn"
+                            onClick = {() => { this.props.handleHeal(this.props.id, this.state.newHealNumber) }}
+                        >
+                            Heal
+                        </button>
+                    </div>
+                    <div className = { this.state.showDamage ? "damageInput show" : "damageInput"}>
+                    <span>Damage Taken</span>
+                        <input 
+                            className = "updateInput"
+                            type = "number"
+                            placeholder = "Amount"
+                            onChange = { this.handleDamageUpdate }
+                        />
+                        <button
+                            className = "damageBtn"
+                            onClick = {() => { this.props.handleDamage(this.props.id, this.state.newDamageNumber) }}
+                        >
+                            Hit
+                        </button>
                     </div>
                 </div>
                 <div 
