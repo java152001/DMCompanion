@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Inttracker from './pages/Initiativetracker'
+import Reference from './pages/Reference'
 import { NavBar } from './components'
 
 class App extends Component {
@@ -31,6 +32,10 @@ class App extends Component {
 				<Route
 					exact path="/inttracker"
 					render={() => <Inttracker />}
+				/>
+				<Route
+					exact path="/reference"
+					render={() => <Reference />}
 				/>
 			</div>
 		)

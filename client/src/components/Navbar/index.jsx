@@ -16,6 +16,11 @@ function NavBarComponent({ loggedIn, _logout }) {
                         Initiative Tracker
                     </Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/reference" className="nav-link">
+                        Reference
+                    </Link>
+                </li>
             </ul>
         </nav>
     )
