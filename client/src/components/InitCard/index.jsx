@@ -111,7 +111,7 @@ class InitCard extends Component {
                             className = "updateRollBtn"
                             onClick = { this.showUpdateRoll }
                             >
-                                +
+                                Change Roll
                         </div>
                         <div 
                             className = {this.state.showRollChange ? "updateRollField show" : "updateRollField" }
@@ -126,7 +126,7 @@ class InitCard extends Component {
                                     className="submit"
                                     onClick = {() => { this.props.updateRoll(this.props.id, this.state.updateRollNumber); this.showUpdateRoll(); }}
                                     >
-                                        Submit
+                                        <i class="fas fa-check"></i>
                                 </button>
                         </div>
                     </div>

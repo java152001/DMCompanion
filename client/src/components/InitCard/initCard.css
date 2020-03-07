@@ -51,29 +51,58 @@
 }
 
 .initCard .roll-cont .updateRollBtn {
-    background-color: blue;
     position: absolute;
-    right: 12px;
-    top: 52%;
+    right: 10px;
+    top: 80%;
     transform: translateY(-50%);
+    z-index: 2;
+    font-size: 14px;
 }
 
 .initCard .roll-cont .updateRollField {
     position: absolute;
-    right: -285px;
-    top: 52%;
-    transform: translate(500px, -50%);
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
     opacity: 0;
-    transition: transform .7s ease, opacity .7s ease;
+    transition: opacity .7s ease;
+    display: flex;
+}
+
+.initCard .roll-cont .updateRollField::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: default;
+}
+
+.initCard .roll-cont .updateRollField.show::after {
+    pointer-events: none;
 }
 
 .initCard .roll-cont .updateRollField.show {
     opacity: 1;
-    transform: translate(0px, -50%);
+    z-index: 3;
+}
+
+.initCard .roll-cont .updateRollInput {
+    width: 30px;
 }
 
 .initCard .updateRollField .submit {
     pointer-events: none;
+    outline: none;
+    box-shadow: none;
+    background-color: #ed3231;
+    margin-left: 2px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    color: #fff;
 }
 
 .initCard .roll-cont .updateRollField.show .submit {
