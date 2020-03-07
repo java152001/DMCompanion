@@ -31,7 +31,9 @@ export default class Reference extends Component {
     submitSearch = () => {
         console.log(this.state.searchValue)
 
-        axios.get("https://api.open5e.com/spells/" + this.state.searchValue.toLowerCase()).then(
+        var valueClean =  this.state.searchValue.replace(/\s/g, '-')
+
+        axios.get("https://api.open5e.com/" + this.state.searchOption + "/" + valueClean.toLowerCase() + "?limit=5").then(
             (res,err) => {
                 if (err) {
                     console.log(err)
@@ -63,23 +65,23 @@ export default class Reference extends Component {
                     <form>
                         <input
                             type = "radio"
-                            value = "spell"
-                            name = "spell"
-                            checked = { this.state.searchOption === 'spell' }
+                            value = "spells"
+                            name = "spells"
+                            checked = { this.state.searchOption === 'spells' }
                             onChange = { this.setSearchOption }
                         /> Spell
                         <input
                             type = "radio"
-                            value = "monster"
-                            name = "monster"
-                            checked = { this.state.searchOption === 'monster' }
+                            value = "monsters"
+                            name = "monsters"
+                            checked = { this.state.searchOption === 'monsters' }
                             onChange = { this.setSearchOption }
                         /> Monster
                         <input
                             type = "radio"
-                            value = "item"
-                            name = "item"
-                            checked = { this.state.searchOption === 'item' }
+                            value = "weapons"
+                            name = "weapons"
+                            checked = { this.state.searchOption === 'weapons' }
                             onChange = { this.setSearchOption }
                         /> Item
                     </form>
