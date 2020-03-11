@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./reference.css";
+import ReferenceCard from "../../components/ReferenceCard";
 import axios from 'axios';
 
 export default class Reference extends Component {
@@ -8,7 +9,9 @@ export default class Reference extends Component {
 
         this.state = {
             searchValue : '',
-            searchOption : ''
+            searchOption : '',
+            spellResponse : {},
+            showCard : false
         }
 
         this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -31,6 +34,7 @@ export default class Reference extends Component {
     submitSearch = () => {
         console.log(this.state.searchValue)
 
+        // replaces spaces with hyphens as required by the api
         var valueClean =  this.state.searchValue.replace(/\s/g, '-')
 
         axios.get("https://api.open5e.com/" + this.state.searchOption + "/" + valueClean.toLowerCase() + "?limit=5").then(
@@ -38,7 +42,18 @@ export default class Reference extends Component {
                 if (err) {
                     console.log(err)
                 } else {
-                    console.log(res)
+                    console.log(res.data)
+                    var spellData = {
+                        name : res.data.name,
+                        desc : res.data.desc,
+                        duration : res.data.duration,
+                        level : res.data.level
+                    };
+
+                    this.setState({
+                        spellResponse: spellData,
+                        showCard: true
+                    })
                 }
             }
         )
@@ -85,6 +100,9 @@ export default class Reference extends Component {
                             onChange = { this.setSearchOption }
                         /> Item
                     </form>
+                </div>
+                <div className="displayCard">
+                    { this.state.showCard === true && <ReferenceCard referenceData = {this.state.spellResponse} />}
                 </div>
             </div>
         )
